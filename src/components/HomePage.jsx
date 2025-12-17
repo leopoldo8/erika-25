@@ -566,7 +566,7 @@ const HomePage = () => {
                     className="absolute inset-0 flex items-center justify-center px-6 py-8 overflow-y-auto pointer-events-none"
                   >
                     <motion.div
-                      className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 max-w-lg w-full relative z-10 pointer-events-auto"
+                      className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 max-w-lg w-full max-h-[90vh] overflow-y-auto relative z-10 pointer-events-auto"
                     >
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -624,25 +624,6 @@ const HomePage = () => {
                     </motion.div>
                     </motion.div>
                   </motion.div>
-
-                  {/* Love Letter Collection Counter */}
-                  {letterEmerging && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1 }}
-                      className="absolute top-8 right-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg px-4 py-3 z-30"
-                      style={{ rotate: letterEmerging ? '180deg' : '0deg' }}
-                    >
-                      <div className="text-center">
-                        <div className="text-2xl mb-1">💌</div>
-                        <div className="text-sm font-semibold text-rose-600">
-                          {collectedLetters.length}/10
-                        </div>
-                        <div className="text-xs text-gray-500">collected</div>
-                      </div>
-                    </motion.div>
-                  )}
 
                   {/* Mini Love Letter Envelopes */}
                   {letterEmerging && showLetterCollection && loveLetters.map((letter) => (
@@ -733,23 +714,6 @@ const HomePage = () => {
                             {['❤️', '💕', '💖', '💗', '💓', '💝'][Math.floor(Math.random() * 6)]}
                           </motion.div>
                         ))}
-                        
-                        {/* Message - Only show once */}
-                        {!hasShownSurprise && (
-                          <motion.div
-                            initial={{ scale: 0, rotate: letterEmerging ? 170 : -10 }}
-                            animate={{ scale: 1, rotate: letterEmerging ? 180 : 0 }}
-                            exit={{ scale: 0, opacity: 0 }}
-                            transition={{ type: "spring", duration: 0.5 }}
-                            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                          >
-                            <div className="bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 text-white px-8 py-4 rounded-2xl shadow-2xl text-center">
-                              <div className="text-3xl mb-2">✨</div>
-                              <div className="text-xl font-bold">Surpresa!</div>
-                              <div className="text-sm opacity-90">Você encontrou um momento mágico</div>
-                            </div>
-                          </motion.div>
-                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>
